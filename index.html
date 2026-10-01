@@ -58,6 +58,7 @@
     --accent:      #1B64DA;
     --accent-mark: #3182F6;
     --accent-bg:   #E8F3FF;
+    --alt:         #7C5CFC;
     --warn:        #8A5A12;
     --warn-bg:     #F7F0E2;
     --term-bg:     #0E1A28;
@@ -78,6 +79,7 @@
       --accent:      #8FBCFB;
       --accent-mark: #5B9CF8;
       --accent-bg:   #10243D;
+      --alt:         #A78BFA;
       --warn:        #D9A65C;
       --warn-bg:     #2B2314;
       --term-bg:     #070F18;
@@ -131,6 +133,38 @@
   }
   @media (max-width: 880px) { .sec::before { display: none; } }
 
+  /* ── 모바일 레이아웃 보정 ───────────────────────────── */
+  @media (max-width: 620px) {
+    .wrap { padding-left: 18px; padding-right: 18px; padding-bottom: 76px; }
+    header { padding-top: 52px; gap: 18px; }
+    .topbar { align-items: flex-start; flex-wrap: wrap; gap: 12px 16px; }
+    .mark b { font-size: 17px; }
+    .lang-toggle button { padding: 7px 11px; }
+    h1 { font-size: clamp(34px, 10.5vw, 46px); letter-spacing: -.025em; }
+    .lede { font-size: 17px; max-width: 100%; }
+    figure { margin-top: 20px; }
+    figcaption { font-size: 13px; }
+    .sec { padding-top: 42px; }
+    h2 { font-size: clamp(23px, 7vw, 28px); }
+    .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fig { padding: 16px 14px; }
+    .fig .v { font-size: 22px; }
+    .fig .k { font-size: 12px; line-height: 1.5; }
+    .links a { width: 100%; justify-content: space-between; }
+  }
+
+  @media (max-width: 380px) {
+    .wrap { padding-left: 16px; padding-right: 16px; }
+    .mark { gap: 9px; }
+    .mark svg { width: 30px; height: 30px; }
+    .mark b { font-size: 16px; }
+    .lang-toggle { margin-left: auto; }
+    .lang-toggle button { padding: 6px 9px; font-size: 12px; }
+    h1 { font-size: 34px; }
+    .lede { font-size: 16px; }
+    .fig .v { font-size: 20px; }
+  }
+
   /* ── 머리 ────────────────────────────────────────────── */
   header { padding: 76px 0 8px; display: flex; flex-direction: column; gap: 20px; }
 
@@ -172,6 +206,8 @@
   p { margin: 0 0 17px; color: var(--ink-soft); max-width: 62ch; }
   p:last-child { margin-bottom: 0; }
   .sec > p:first-of-type { margin-top: 14px; }
+  .section-note { margin-top: 24px; }
+  .section-note + .section-note { margin-top: 22px; }
   strong { color: var(--ink); font-weight: 600; }
 
   /* ── 히어로 도해 ─────────────────────────────────────── */
@@ -498,7 +534,7 @@
       </div>
     </div>
 
-    <p style="margin-top:24px">
+    <p class="section-note">
       <span lang="ko">
         표준을 <strong>쓸 줄 아는 것</strong>과 <strong>이해하는 것</strong>은 다르다고 생각했습니다.
         직접 구현해 보니 부동소수점을 쓰지 않는 이유, 복호화에 실패해도 실패했다고 드러내지
@@ -623,7 +659,7 @@
       <div class="fig"><span class="v">2</span><span class="k"><span lang="ko">브랜치 수</span><span lang="en">Branches</span></span></div>
     </div>
 
-    <p style="margin-top:22px">
+    <p class="section-note">
       <span lang="ko">
         안드로이드 앱은 Kotlin과 Jetpack Compose로, 서버는 Spring Boot와 PostgreSQL로 만들었습니다.
         실시간 메시지 전달에는 WebSocket 기반의 STOMP를 사용하고, AWS EC2에 Nginx를 리버스 프록시로
